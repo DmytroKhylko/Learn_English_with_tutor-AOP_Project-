@@ -11,7 +11,6 @@ import javax.inject.Singleton;
 
 @Singleton
 public class LessonsController extends Controller {
-
 	private ArrayList<Lesson> lessons;
 
 	private final Form<LessonData> form;
