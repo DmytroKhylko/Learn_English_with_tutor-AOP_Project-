@@ -1,0 +1,68 @@
+h1 {
+  color: purple;
+  margin-left: 100px;
+}
+
+h2 {
+  color: #f76d00;
+  font-size: 60px;
+  margin-left: 100px;
+}
+
+h4{
+  font-size: 50px;
+  color: black;
+}
+
+#layout {
+  padding: 20px;
+  border: solid 1px black;
+  background-color: purple;
+}
+
+
+#footer, #footer1 {
+  text-align: center;
+  input-align: center;
+}
+
+article {
+  margin-top: -350px;
+  margin-left: 750px;
+  margin-right: 300px;
+  margin-bottom: 100px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  padding: 1em;
+  overflow: hidden;
+
+}
+
+input {
+  border-radius: 15px;
+  border: 1px solid purple;
+  font-size: 25px;
+  cursor:pointer;
+  position: relative;
+  padding:0px;
+  margin:1px;
+  value: 0
+}
+
+#button1 {
+  margin-right: 100px;
+  margin-left: 1000px;
+  border: 2px solid white;
+  background: #f76d00;
+  font-size:20px;
+  border-radius: 15px;
+}
+
+#button2 {
+  border: 2px solid white;
+  background: #f76d00;
+  font-size:20px;
+  border-radius: 15px;
+}

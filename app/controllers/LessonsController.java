@@ -41,4 +41,5 @@ public class LessonsController extends Controller {
 	public Result index(Http.Request request) {
 		return ok(views.html.lessons.render(lessons, form, request));
 	}
+
 }
