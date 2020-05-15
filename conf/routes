@@ -5,7 +5,7 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 
-GET     /home                       controllers.HomeController.home
+GET     /home                       controllers.HomeController.home(request: Request)
 
 GET     /lessons										controllers.LessonsController.index(request: Request)
 

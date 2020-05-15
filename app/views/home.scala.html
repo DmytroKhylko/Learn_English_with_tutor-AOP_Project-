@@ -1,4 +1,5 @@
-
+@import play.mvc.Http.Request
+@(implicit request: Request)
 <head>
   <title>Computer Geeks Inc</title>
   <link href="http://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheets">
@@ -26,7 +27,7 @@
 </section>
 
 <article id="footer1">
-  <form id="footer" method="post" action="/login/">
+  @helper.form(routes.HomeController.home()) {
     <h4  > Welсome! </h4>
     <input id="loginField" type="text" required placeholder="  Username" name="login" >
     <br><br>
@@ -34,10 +35,8 @@
     <br><br>
     <button id="button2">  Log in   </button>
     <br>
-
-  </form>
+  }
 </article>
-
 <section id="section">
   <!--        <h5> New to our site — Create an account </h5>-->
 </section>
