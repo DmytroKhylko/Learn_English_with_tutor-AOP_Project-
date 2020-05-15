@@ -1,5 +1,5 @@
-name := """EnglishLessonsProj"""
-organization := "com.example"
+name := """Fast Fluency"""
+organization := "Computer Geeks, Inc."
 
 version := "1.0-SNAPSHOT"
 
