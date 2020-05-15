@@ -1,5 +1,6 @@
 package controllers;
 
+import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.*;
 
 /**
@@ -17,5 +18,9 @@ public class HomeController extends Controller {
     public Result index() {
         return ok(views.html.index.render());
     }
+    public Result home(Http.Request request) {
+      return ok(views.html.home.render(request));
+    }
+
 
 }
