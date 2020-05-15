@@ -19,5 +19,9 @@ public class HomeController extends Controller {
       return ok(views.html.home.render(request));
     }
 
+    public Result signin(Http.Request request){
+      return ok(views.html.signin.render(request));
+    }
+
 
 }
