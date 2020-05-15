@@ -18,8 +18,8 @@ public class HomeController extends Controller {
         return ok(views.html.index.render());
     }
 
-    public Result signin(){
-      return ok(views.html.signin.render());
+    public Result signin(Http.Request request){
+      return ok(views.html.signin.render(request));
     }
 
 }

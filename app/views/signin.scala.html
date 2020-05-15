@@ -1,8 +1,11 @@
-@()
+@import play.mvc.Http.Request
+@(implicit request: Request)
 <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/signin.css")'>
 <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheet">
 <h1><em>FAST FLUENCY</em>
+  <a href="/">
   <button id="button1">Log in</button>
+  </a>
 </h1>
 <p id="layout">
   <br>
@@ -15,7 +18,7 @@
     </div>
 
     <div class="l-part">
-
+      @helper.form(routes.HomeController.signin()) {
       <p><input name="dzen" type="radio" value="nedzen"> Teacher
         <input name="dzen" type="radio" value="dzen"> Student</p>
       <input type="text" placeholder="Username" class="input-1" />
@@ -23,7 +26,7 @@
         <input type="password" placeholder="Password" class="input-2" />
       </div>
       <input type="button" value="Create Account" class="btn" />
-
+      }
     </div>
   </div>
 </div>
