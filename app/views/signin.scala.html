@@ -21,11 +21,12 @@
       @helper.form(routes.HomeController.signin()) {
       <p><input name="dzen" type="radio" value="nedzen"> Teacher
         <input name="dzen" type="radio" value="dzen"> Student</p>
-      <input type="text" placeholder="Username" class="input-1" />
+      <input type="text" required placeholder="Username" class="input-1" />
       <div class="overlap-text">
         <input type="password" placeholder="Password" class="input-2" />
       </div>
-      <input type="button" value="Create Account" class="btn" />
+@*      <input type="button" value="Create Account" class="btn" />*@
+        <button class="btn" type="submit">  Log in   </button>
       }
     </div>
   </div>
