@@ -1,6 +1,5 @@
 package controllers;
 
-import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.*;
 
 /**
