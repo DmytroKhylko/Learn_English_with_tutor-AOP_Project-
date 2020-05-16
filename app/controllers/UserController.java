@@ -31,6 +31,7 @@ public class UserController extends Controller{
     if (boundForm.hasErrors()) {
       return badRequest(views.html.signin.render(request));
     } else {
+
       UserData data = boundForm.get();
 
       if(!db.alreadySignedIn(data.getLogin())) {
@@ -52,6 +53,7 @@ public class UserController extends Controller{
     } else {
 
       UserLogInData logInData = boundForm.get();
+
       if(db.correctLogInData(logInData.getLogin(), logInData.getPassword())) {
         if (db.getStatus(logInData.getLogin()).equals("teacher")) {
           return redirect(routes.HomeController.teacher(logInData.getLogin()));

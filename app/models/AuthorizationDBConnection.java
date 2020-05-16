@@ -50,6 +50,7 @@ public class AuthorizationDBConnection {
     }
       return false;
   }
+
   public boolean correctLogInData(String login, String password){
     try {
       Connection conn = db.getConnection();
@@ -71,6 +72,7 @@ public class AuthorizationDBConnection {
     }
       return false;
   }
+
   public String getStatus(String login){
     try {
       Connection conn = db.getConnection();
