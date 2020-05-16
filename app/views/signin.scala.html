@@ -1,33 +1,43 @@
 @import play.mvc.Http.Request
 @(implicit request: Request)
-<link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/signin.css")'>
-<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheet">
-<h1><em>FAST FLUENCY</em>
-    <form action="/">
-      <button id="button1" type="submit">Log in</button>
-    </form>
-</h1>
-<p id="layout">
-  <br>
-</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/signin.css")'>
+      <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheet">
+  </head>
+  <body>
+      <h1><em>FAST FLUENCY</em>
+      </h1>
+      <a class="btn"  id="button1" href="/">Log in</a>
+      <p id="layout">
+        <br>
+      </p>
 
-<div id="wrapper">
-  <div class="main-content">
-    <div class="header">
-      <p>Welcome to Fast Fluency</p>
-    </div>
+      <div id="wrapper">
+        <div class="main-content">
+          <div class="header">
+            <p>Welcome to Fast Fluency</p>
+          </div>
 
-    <div class="l-part">
-      @helper.form(routes.HomeController.signin()) {
-      <p><input name="dzen" type="radio" value="nedzen"> Teacher
-        <input name="dzen" type="radio" value="dzen"> Student</p>
-      <input type="text" required placeholder="Username" class="input-1" />
-      <div class="overlap-text">
-        <input type="password" placeholder="Password" class="input-2" />
+          <div class="l-part">
+            @helper.form(routes.UserController.signin()) {
+              @helper.CSRF.formField
+                <p>
+                  <input  type="radio"  name="status" value="teacher"> Teacher
+                  <input  type="radio"  name="status" value="student"> Student
+                </p>
+
+                <input type="text" name="login"  placeholder="Username" class="input-1" />
+
+                <div class="overlap-text">
+                  <input type="password" name="password"  placeholder="Password" class="input-2" />
+                </div>
+                <button class="btn" type="submit">  Create Account   </button>
+            }
+          </div>
+        </div>
       </div>
-@*      <input type="button" value="Create Account" class="btn" />*@
-        <button class="btn" type="submit">  Log in   </button>
-      }
-    </div>
-  </div>
-</div>
+  </body>
+</html>

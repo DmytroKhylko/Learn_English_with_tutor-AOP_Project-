@@ -9,9 +9,18 @@ GET     /lessons										controllers.LessonsController.index(request: Request)
 
 POST    /lessons										controllers.LessonsController.createLesson(request: Request)
 
-GET     /signin                     controllers.HomeController.signin(request: Request)
+POST    /signin										controllers.UserController.signin(request: Request)
+
+GET     /signin                      controllers.HomeController.signin(request: Request)
 
 GET     /                      controllers.HomeController.home(request: Request)
+
+
+
+GET     /student                  controllers.HomeController.student(login: String, request: Request)
+
+GET     /teacher                  controllers.HomeController.teacher(login: String, request: Request)
+
 
 
 # Map static resources from the /public folder to the /assets URL path
