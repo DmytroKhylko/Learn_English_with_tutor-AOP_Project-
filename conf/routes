@@ -7,13 +7,11 @@
 
 GET     /lessons										controllers.LessonsController.index(request: Request)
 
-POST    /lessons										controllers.LessonsController.createLesson(request: Request)
-
+POST    /lessons									controllers.LessonsController.createLesson(request: Request)
 POST    /signin										controllers.UserController.signin(request: Request)
-
-GET     /signin                      controllers.HomeController.signin(request: Request)
-
-GET     /                      controllers.HomeController.home(request: Request)
+GET     /signin                   controllers.HomeController.signin(request: Request)
+POST    /										      controllers.UserController.login(request: Request)
+GET     /                         controllers.HomeController.home(request: Request)
 
 
 
