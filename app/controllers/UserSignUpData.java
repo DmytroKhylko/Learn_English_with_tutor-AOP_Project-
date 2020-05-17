@@ -2,18 +2,12 @@ package controllers;
 
 import play.data.validation.Constraints;
 
-public class UserData {
-
-  @Constraints.Required
-  public String login;
-
-  @Constraints.Required
-  public String password;
+public class UserSignUpData extends UserLogInData{
 
   @Constraints.Required
   public String status;
 
-  public UserData(){}
+  public UserSignUpData(){}
 
   public String getStatus() {
     return status;

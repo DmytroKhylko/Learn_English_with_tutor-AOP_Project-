@@ -19,8 +19,8 @@ public class HomeController extends Controller {
       return ok(views.html.home.render(request));
     }
 
-    public Result signin(Http.Request request){
-      return ok(views.html.signin.render(request));
+    public Result signUp(Http.Request request){
+      return ok(views.html.signup.render(request));
     }
 
     //these two functions must be deleted. They are temporary

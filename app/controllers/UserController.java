@@ -12,27 +12,27 @@ import models.AuthorizationDBConnection;
 @Singleton
 public class UserController extends Controller{
 
-  private final Form<UserData> userForm;
+  private final Form<UserSignUpData> userForm;
   private final Form<UserLogInData> userLogInForm;
 
   private final AuthorizationDBConnection db;
 
   @Inject
   public UserController(FormFactory formFactory, AuthorizationDBConnection db) {
-    this.userForm = formFactory.form(UserData.class);
+    this.userForm = formFactory.form(UserSignUpData.class);
     this.userLogInForm = formFactory.form(UserLogInData.class);
     this.db = db;
   }
 
   @RequireCSRFCheck
-  public Result signin(Http.Request request){
-    final Form<UserData> boundForm = userForm.bindFromRequest(request);
+  public Result signUp(Http.Request request){
+    final Form<UserSignUpData> boundForm = userForm.bindFromRequest(request);
 
     if (boundForm.hasErrors()) {
-      return badRequest(views.html.signin.render(request));
+      return badRequest(views.html.signup.render(request));
     } else {
 
-      UserData data = boundForm.get();
+      UserSignUpData data = boundForm.get();
 
       if(!db.alreadySignedIn(data.getLogin())) {
         db.addUser(data.getLogin(), data.getPassword(), data.getStatus());
@@ -41,11 +41,11 @@ public class UserController extends Controller{
         }
         else return redirect(routes.HomeController.teacher(data.getLogin()));
       }
-      else return badRequest(views.html.signin.render(request)).flashing("danger", "LogIn already used!");
+      else return badRequest(views.html.signup.render(request)).flashing("danger", "LogIn already used!");
     }
   }
   @RequireCSRFCheck
-  public Result login(Http.Request request) {
+  public Result logIn(Http.Request request) {
     final Form<UserLogInData> boundForm = userLogInForm.bindFromRequest(request);
 
     if (boundForm.hasErrors()) {
