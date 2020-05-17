@@ -1,12 +1,10 @@
 h1 {
   color: purple;
-  margin-left: 100px;
 }
 
 h2 {
   color: #f76d00;
   font-size: 60px;
-  margin-left: 100px;
 }
 
 h4{
@@ -20,14 +18,8 @@ h4{
   background-color: purple;
 }
 
-
-#footer, #footer1 {
-  text-align: center;
-  input-align: center;
-}
-
 article {
-  margin-top: -350px;
+  /* margin-top: -350px;
   margin-left: 750px;
   margin-right: 300px;
   margin-bottom: 100px;
@@ -36,19 +28,19 @@ article {
   border-left: 1px solid gray;
   border-right: 1px solid gray;
   padding: 1em;
+  overflow: hidden; */
+  border: 1px solid gray;
   overflow: hidden;
-
 }
 
 input {
-  border-radius: 15px;
+  border-radius: 5px;
   border: 1px solid purple;
   font-size: 25px;
   cursor:pointer;
   position: relative;
   padding:0px;
   margin:1px;
-  value: 0
 }
 
 #button1 {
@@ -57,12 +49,23 @@ input {
   border: 2px solid white;
   background: #f76d00;
   font-size:20px;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 #button2 {
   border: 2px solid white;
   background: #f76d00;
   font-size:20px;
-  border-radius: 15px;
+  border-radius: 7px;
+  color: white;
+  padding: 5px 20px;
+}
+
+.signin-form {
+  border: 1px solid black;
+  display: center;
+}
+
+.signin-form > form {
+  width: 50%;
 }

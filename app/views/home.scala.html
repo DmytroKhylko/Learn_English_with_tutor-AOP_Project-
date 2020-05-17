@@ -4,39 +4,46 @@
 <html lang="en">
   <head>
     <title>FAST FLUENCY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="http://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheets">
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/home.css")">
   <!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
   </head>
 
   <body>
-    <section id="top">
-      <div class="wrapper">
+    <nav class="navbar navbar-light bg-light justify-content-betwee">
+      <h1><em>FAST FLUENCY</em></h1>
+      <button id="button1" type="submit">Sign up</button>
+    </nav>
 
-        <h1><em>FAST FLUENCY </em></h1>
-        <a id="button1" href="/signup">Sign up</a>
-        <p id = "layout">
-          <br>
-        </p>
-        <br><br><br>
-        <h2><em>Learning</em><br>English is fun </h2>
-        <h1> Fast Fluency — some</h1>
-        <h1>info about it.</h1>
-      </div>
-    </section>
+    <p id="layout"></p>
 
-    <article id="footer1">
-      @helper.form(routes.UserController.logIn()) {
-        @helper.CSRF.formField
-          <h4  > Welсome! </h4>
-            <input type="text"  name="login"  required placeholder="  Username" id="loginField"/>
-          <br><br>
-            <input type="password"  name="password"  required placeholder="  Password" id="passwordField"/>
-          <br><br>
+    <div class="container-fluid">
+      <div class="row">
+        <div id="top" class="col-sm">
+          <div class="wrapper">
+            <h2><em>Learning</em><br>English is fun </h2>
+            <h1> Fast Fluency — some</h1>
+            <h1>info about it.</h1>
+          </div>
+        </div>
+
+        <div id="footer1" class="col-sm signin-form">
+          @helper.form(routes.HomeController.home()) {
+            @helper.CSRF.formField
+            <h4  > Welсome! </h4>
+            <input id="loginField" type="text" required placeholder="  Username" name="login" >
+            <br><br>
+            <input id="passwordField" type="password" required placeholder="  Password" name="password">
+            <br><br>
             <button id="button2" type="submit">  Log in   </button>
-          <br>
-      }
-    </article>
+            <br>
+          }
+        </div>
+      </div>
+
+    </div>
     <section id="section">
       <!--        <h5> New to our site — Create an account </h5>-->
     </section>

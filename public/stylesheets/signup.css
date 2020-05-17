@@ -8,8 +8,12 @@ body {
 }
 #layout{
   padding : 20px;
-  border: solid 1px black;
+  /* border: solid 1px black; */
   background-color: purple;
+}
+
+.nav-logo {
+  color: purple;
 }
 
 #button1{
@@ -24,20 +28,20 @@ body {
   /*margin-left: 1000px;*/
   position: relative;
   display: inline-block;
-  width: 50px;
+  width: 120px;
 }
 #wrapper {
   width: 500px;
   height: 50%;
   overflow: hidden;
-  border: 0px solid #000;
+  /* border: 0px solid #000; */
   margin: 50px auto;
   padding: 10px;
 }
 
 .main-content {
-  width: 250px;
-  height: 70%;
+  width: 50%;
+  height: 90%;
   margin: 20px auto;
   background-color: #fff;
   border: 2px solid #e6e6e6;
@@ -45,7 +49,7 @@ body {
 }
 
 .header {
-  border: 0px solid #000;
+  /* border: 0px solid #000; */
   margin-bottom: 9px;
   font-size: 40px;
   font-family: "Avantgarde", sans-serif;
@@ -108,5 +112,5 @@ body {
 
 
 input:focus {
-  background-color: purple;
+  /* border-color: purple; */
 }
