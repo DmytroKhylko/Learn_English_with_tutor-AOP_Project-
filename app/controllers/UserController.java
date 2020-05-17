@@ -39,11 +39,11 @@ public class UserController extends Controller{
       if(!db.alreadySignedIn(data.getLogin())) {
         db.addUser(data.getLogin(), createPassword(data.getPassword()), data.getStatus());
         if (data.getStatus().equals("student")) {
-          return redirect(routes.HomeController.student(data.getLogin()));
+          return redirect(routes.HomeController.student()).addingToSession(request, "login", data.getLogin()).addingToSession(request, "status", db.getStatus(data.getLogin()));
         }
-        else return redirect(routes.HomeController.teacher(data.getLogin()));
+        return redirect(routes.HomeController.teacher()).addingToSession(request, "login", data.getLogin()).addingToSession(request, "status", db.getStatus(data.getLogin()));
       }
-      else return badRequest(views.html.signup.render(request)).flashing("danger", "LogIn already used!");
+      return badRequest(views.html.signup.render(request)).flashing("danger", "LogIn already used!");
     }
   }
   @RequireCSRFCheck
@@ -52,15 +52,20 @@ public class UserController extends Controller{
 
     if (boundForm.hasErrors()) {
       return badRequest(views.html.home.render(request));
-    } else {
-
-      UserLogInData logInData = boundForm.get();
-
-      if(db.correctLogInData(logInData.getLogin(), logInData.getPassword())) {
-        if (db.getStatus(logInData.getLogin()).equals("teacher")) {
-          return redirect(routes.HomeController.teacher(logInData.getLogin()));
-        } else return redirect(routes.HomeController.student(logInData.getLogin()));
-      }else return badRequest(views.html.home.render(request));
     }
+
+    UserLogInData logInData = boundForm.get();
+
+    if(db.correctLogInData(logInData.getLogin(), logInData.getPassword())) {
+      if (db.getStatus(logInData.getLogin()).equals("teacher")) {
+        return redirect(routes.HomeController.teacher()).addingToSession(request, "login", logInData.getLogin()).addingToSession(request, "status", db.getStatus(logInData.getLogin()));
+      }
+      return redirect(routes.HomeController.student()).addingToSession(request, "login", logInData.getLogin()).addingToSession(request, "status", db.getStatus(logInData.getLogin()));
+    }
+    return badRequest(views.html.home.render(request));
+
+  }
+  public Result logOut(Http.Request request){
+    return redirect(routes.HomeController.home()).removingFromSession(request, "login");
   }
 }

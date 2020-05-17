@@ -4,16 +4,16 @@
 
 # An example controller showing a sample home page
 
-
+GET    /logout                   controllers.UserController.logOut(request: Request)
 POST    /signup										controllers.UserController.signUp(request: Request)
 GET     /signup                   controllers.HomeController.signUp(request: Request)
 
 POST    /										      controllers.UserController.logIn(request: Request)
 GET     /                         controllers.HomeController.home(request: Request)
 
-GET     /student                  controllers.HomeController.student(login: String, request: Request)
+GET     /student                  controllers.HomeController.student(request: Request)
 
-GET     /teacher                  controllers.HomeController.teacher(login: String, request: Request)
+GET     /teacher                  controllers.HomeController.teacher(request: Request)
 
 
 

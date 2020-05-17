@@ -24,4 +24,5 @@ libraryDependencies ++= Seq(
 
 // https://mvnrepository.com/artifact/org.mindrot/jbcrypt
 libraryDependencies += "org.mindrot" % "jbcrypt" % "0.3m"
+libraryDependencies ++= Seq(evolutions, jdbc)
 
