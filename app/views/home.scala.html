@@ -14,7 +14,7 @@
   <body>
     <nav class="navbar navbar-light bg-light justify-content-betwee">
       <h1><em>FAST FLUENCY</em></h1>
-      <button id="button1" type="submit">Sign up</button>
+      <a class="btn" id="button1" href="/signup">Sign up</a>
     </nav>
 
     <p id="layout"></p>
@@ -30,7 +30,7 @@
         </div>
 
         <div id="footer1" class="col-sm signin-form">
-          @helper.form(routes.HomeController.home()) {
+          @helper.form(routes.UserController.logIn()) {
             @helper.CSRF.formField
             <h4  > Welсome! </h4>
             <input id="loginField" type="text" required placeholder="  Username" name="login" >
