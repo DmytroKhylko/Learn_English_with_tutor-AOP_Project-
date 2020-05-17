@@ -1,13 +1,12 @@
 package controllers;
 
 import play.data.validation.Constraints;
-
 public class UserLogInData {
   @Constraints.Required
-  public String login;
+  protected String login;
 
   @Constraints.Required
-  public String password;
+  protected String password;
 
   public UserLogInData() {
   }

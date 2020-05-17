@@ -28,7 +28,7 @@ public class HomeController extends Controller {
       return ok(views.html.student_home_temporary.render(login, request));
     }
 
-  public Result teacher(String login, Http.Request request){
-    return ok(views.html.teacher_home_temporary.render(login, request));
-  }
+    public Result teacher(String login, Http.Request request){
+      return ok(views.html.teacher_home_temporary.render(login, request));
+    }
 }

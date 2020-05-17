@@ -9,6 +9,8 @@ import javax.inject.Singleton;
 
 import models.AuthorizationDBConnection;
 
+import static models.AuthorizationDBConnection.createPassword;
+
 @Singleton
 public class UserController extends Controller{
 
@@ -35,7 +37,7 @@ public class UserController extends Controller{
       UserSignUpData data = boundForm.get();
 
       if(!db.alreadySignedIn(data.getLogin())) {
-        db.addUser(data.getLogin(), data.getPassword(), data.getStatus());
+        db.addUser(data.getLogin(), createPassword(data.getPassword()), data.getStatus());
         if (data.getStatus().equals("student")) {
           return redirect(routes.HomeController.student(data.getLogin()));
         }

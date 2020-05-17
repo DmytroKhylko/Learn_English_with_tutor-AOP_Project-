@@ -1,5 +1,6 @@
 package models;
 
+import org.mindrot.jbcrypt.BCrypt;
 import play.db.*;
 import javax.inject.*;
 import java.sql.*;
@@ -62,7 +63,7 @@ public class AuthorizationDBConnection {
       while(result.next()){
         String logInFromDB = result.getString("login");
         String passwordFromDB = result.getString("password");
-        if(logInFromDB.equals(login) && passwordFromDB.equals(password)){
+        if(logInFromDB.equals(login) && checkPassword(password, passwordFromDB)){
           return true;
         }
       }
@@ -94,5 +95,19 @@ public class AuthorizationDBConnection {
       se.printStackTrace();
     }
     return null;
+  }
+
+  public static String createPassword(String clearString){
+    return BCrypt.hashpw(clearString, BCrypt.gensalt());
+  }
+
+  public static boolean checkPassword(String password, String encryptedPassword) {
+    if (password == null) {
+      return false;
+    }
+    if (encryptedPassword == null) {
+      return false;
+    }
+    return BCrypt.checkpw(password, encryptedPassword);
   }
 }

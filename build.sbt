@@ -21,3 +21,7 @@ libraryDependencies ++= Seq(
   "org.hibernate" % "hibernate-core" % "5.4.9.Final",
   "mysql" % "mysql-connector-java" % "8.0.11"
 )
+
+// https://mvnrepository.com/artifact/org.mindrot/jbcrypt
+libraryDependencies += "org.mindrot" % "jbcrypt" % "0.3m"
+
