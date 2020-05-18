@@ -15,27 +15,7 @@ public class AuthorizationDBConnection {
     this.db = db;
     }
 
-
-//    public void getConnection(String ){
-//
-//    }
   public void addUser(String login, String password, String status) {
-//    Connection conn = null;
-//    try {
-//      conn = db.getConnection();
-//      Statement stmt = conn.createStatement();
-//
-//      String sql = String.format("INSERT INTO users (login, password, status) VALUES ('%s', '%s', '%s')", login, password, status);
-//
-//      stmt.execute(sql);
-//
-//      conn.close();
-//    } catch (SQLException se) {
-//      se.printStackTrace();
-//    }finally {
-//      if(conn.isClosed())
-//      conn.close();
-//    }
     db.withConnection(connection -> {
       Statement stmt = connection.createStatement();
       String sql = String.format("INSERT INTO users (login, password, status) VALUES ('%s', '%s', '%s')", login, password, status);
