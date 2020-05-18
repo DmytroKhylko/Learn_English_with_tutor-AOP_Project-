@@ -23,7 +23,8 @@ public class HomeController extends Controller {
         return ok(views.html.home.render(request));
       }
       Optional<String> status = request.session().get("status");
-      if(status.equals("teacher"))
+      Optional<String> teacher = Optional.of("teacher");
+      if(status.equals(teacher))
         return redirect(routes.HomeController.teacher());
       return redirect(routes.HomeController.student());
     }
