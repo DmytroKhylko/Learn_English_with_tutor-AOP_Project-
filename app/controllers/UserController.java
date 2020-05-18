@@ -9,6 +9,9 @@ import javax.inject.Singleton;
 
 import models.AuthorizationDBConnection;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static models.AuthorizationDBConnection.createPassword;
 
 @Singleton
@@ -57,15 +60,18 @@ public class UserController extends Controller{
     UserLogInData logInData = boundForm.get();
 
     if(db.correctLogInData(logInData.getLogin(), logInData.getPassword())) {
+      Map<String, String> sessionValues =  new HashMap<>();
+      sessionValues.put("login", logInData.getLogin());
+      sessionValues.put("status", db.getStatus(logInData.getLogin()));
       if (db.getStatus(logInData.getLogin()).equals("teacher")) {
-        return redirect(routes.HomeController.teacher()).addingToSession(request, "login", logInData.getLogin()).addingToSession(request, "status", db.getStatus(logInData.getLogin()));
+        return redirect(routes.HomeController.teacher()).addingToSession(request, sessionValues);
       }
-      return redirect(routes.HomeController.student()).addingToSession(request, "login", logInData.getLogin()).addingToSession(request, "status", db.getStatus(logInData.getLogin()));
+      return redirect(routes.HomeController.student()).addingToSession(request, sessionValues);
     }
     return badRequest(views.html.home.render(request));
 
   }
   public Result logOut(Http.Request request){
-    return redirect(routes.HomeController.home()).removingFromSession(request, "login");
+    return redirect(routes.HomeController.home()).removingFromSession(request, "login", "status");
   }
 }
