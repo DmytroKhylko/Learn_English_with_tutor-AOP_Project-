@@ -1,13 +1,32 @@
+@import java.util
 @import play.mvc.Http.Request
-@(login: String)(implicit request: Request)
-<html>
-  <title>
-
-  </title>
+@(login: String, connectedUsers: util.LinkedList[String])(implicit request: Request)
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
 
   <body>
     Hello student @login
-    <a href="/" >home page</a>
-    <a href="/logout" >log Out</a>
+    <a class="btn" href="/logout" >log Out</a>
+
+    @if(connectedUsers.isEmpty){
+      <br>
+      You have no connected teachers
+    }
+    <ul>
+    @for(connectedUser <- connectedUsers) {
+      <li>@connectedUser</li>
+    }
+    </ul>
+
+@*    @helper.form(routes.UserController.logOut()) {*@
+@*      @helper.CSRF.formField*@
+@*      <input type="text" required placeholder="  Enter name of teacher ot add" name="connectWithUser">*@
+@*      <br><br>*@
+@*      <button type="submit">  Find   </button>*@
+@*      <br>*@
+@*    }*@
   </body>
 </html>

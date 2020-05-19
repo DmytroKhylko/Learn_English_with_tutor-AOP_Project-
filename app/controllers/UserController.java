@@ -11,6 +11,7 @@ import models.AuthorizationDBConnection;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static models.AuthorizationDBConnection.createPassword;
 
@@ -74,4 +75,21 @@ public class UserController extends Controller{
   public Result logOut(Http.Request request){
     return redirect(routes.HomeController.home()).removingFromSession(request, "login", "status");
   }
+
+//  @RequireCSRFCheck
+//  public Result linkUser(Http.Request request){
+//    final Form<ConnectWithUser> boundForm = connectWithUserForm.bindFromRequest(request);
+//    if (boundForm.hasErrors()) {
+//      return badRequest(views.html.home.render(request));
+//    }
+//    ConnectWithUser connectWithUser = boundForm.get();
+//    if(userDB.connectWithUserInDB(request.session().get("login"), connectWithUser.getConnectWithUser())){
+//      Optional<String> status = request.session().get("status");
+//      Optional<String> teacher = Optional.of("teacher");
+//      if(status.equals(teacher))
+//        return redirect(routes.HomeController.teacher());
+//      return redirect(routes.HomeController.student());
+//    }
+//    return badRequest(views.html.home.render(request));
+//  }
 }

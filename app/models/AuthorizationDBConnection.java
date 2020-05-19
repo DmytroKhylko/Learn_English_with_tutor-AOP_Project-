@@ -4,6 +4,8 @@ import org.mindrot.jbcrypt.BCrypt;
 import play.db.*;
 import javax.inject.*;
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.Optional;
 
 @Singleton
 public class AuthorizationDBConnection {
@@ -102,5 +104,45 @@ public class AuthorizationDBConnection {
       return false;
     }
     return BCrypt.checkpw(password, encryptedPassword);
+  }
+
+  public LinkedList<String> getLinkedUsers(String user){
+    LinkedList<String> linkedUsers = new LinkedList<>();
+    try {
+      Connection conn = db.getConnection();
+      Statement stmt = conn.createStatement();
+
+      String sql = String.format("SELECT linkedUser FROM relations WHERE user = '%s'", user);
+
+      ResultSet result = stmt.executeQuery(sql);
+      while(result.next()){
+        linkedUsers.add(result.getString("linkedUser"));
+      }
+      conn.close();
+    } catch (SQLException se) {
+      se.printStackTrace();
+    }
+    return linkedUsers;
+  }
+  public boolean linkUser(String user, String linkUser){
+    if(alreadySignedIn(linkUser)){
+      try {
+        Connection conn = db.getConnection();
+        Statement stmt = conn.createStatement();
+
+        String sql = String.format("INSERT INTO relations (user, linkedUser) VALUES ('%s', '%s')",user, linkUser);
+
+        stmt.execute(sql);
+
+        sql = String.format("INSERT INTO relations (user, linkedUser) VALUES ('%s', '%s')",linkUser, user);
+        stmt.execute(sql);
+
+        conn.close();
+        return true;
+      } catch (SQLException se) {
+        se.printStackTrace();
+      }
+    }
+    return false;
   }
 }

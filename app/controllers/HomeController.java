@@ -4,6 +4,11 @@ import play.mvc.*;
 
 import java.util.Optional;
 
+import models.AuthorizationDBConnection;
+import views.html.student_home_temporary;
+
+import javax.inject.Inject;
+
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
@@ -16,6 +21,12 @@ public class HomeController extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
+
+    private final AuthorizationDBConnection db;
+    @Inject
+  public HomeController(AuthorizationDBConnection db) {
+    this.db = db;
+  }
 
     public Result home(Http.Request request) {
       Optional<String> logIn = request.session().get("login");
@@ -37,7 +48,7 @@ public class HomeController extends Controller {
       return request
         .session()
         .get("login")
-        .map(logIn -> ok(views.html.student_home_temporary.render(logIn, request)))
+        .map(logIn -> ok(student_home_temporary.render(logIn, db.getLinkedUsers(logIn), request)))
         .orElseGet(() -> redirect(routes.HomeController.home()));
     }
 
@@ -45,7 +56,7 @@ public class HomeController extends Controller {
       return request
         .session()
         .get("login")
-        .map(logIn -> ok(views.html.teacher_home_temporary.render(logIn, request)))
+        .map(logIn -> ok(views.html.teacher_home_temporary.render(logIn, db.getLinkedUsers(logIn), request)))
         .orElseGet(() -> redirect(routes.HomeController.home()));
     }
 }
