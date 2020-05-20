@@ -107,3 +107,27 @@ input {
   background: #f17a49;
 }
 
+.lessons {
+  margin-right:5%;
+  margin-left: 5%;
+  margin-top: 5%;
+  width: 89%;
+  outline: none;
+  height: 15%;
+  background: #efbc9a;
+}
+
+.lessons-view {
+  margin-left: 77%;
+  margin-top: -20.75%;
+  border: 1px solid #c95c0a;
+  background: #f17a49;
+}
+
+.lessons-edit {
+  margin-left: 10%;
+  margin-top: -20.75%;
+  border: 1px solid #c95c0a;
+  background: #f17a49;
+}
+
