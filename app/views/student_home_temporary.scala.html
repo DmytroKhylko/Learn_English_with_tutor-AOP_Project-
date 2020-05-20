@@ -1,5 +1,6 @@
 @import java.util
 @import play.mvc.Http.Request
+<<<<<<< HEAD
 @(login: String, connectedUsers: util.LinkedList[String])(implicit request: Request)
 <!DOCTYPE html>
 <html lang="en">
@@ -34,5 +35,40 @@
 
     </ul>
       <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
+=======
+@(login: String)(implicit request: Request)
+@()
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FAST FLUENCY</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="http://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheets">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/studentpage.css")">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <h1 class="nav-logo"><em>FAST FLUENCY</em></h1>
+      <a class="btn"  id="button1" href="/">Log out</a>
+    </nav>
+    <p id="layout"></p>
+    <a class="btn" id="btn-option1" href="/">Lessons</a>
+    <a class="btn" id="btn-option2" href="/">Tests</a>
+    <p id="search-layout"></p>
+    <form class="searchbar" action="action_page.php">
+      <input type="text" placeholder="         Find your teacher" name="search">
+      <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+
+    <div class="button-layout">
+      <a class="btn" id="btn-teacher1" href="/">Teacher 1</a>
+      <br><br>
+      <a class="btn" id="btn-teacher2" href="/">Teacher 2</a>
+      <br><br>
+      <a class="btn" id="btn-teacher3" href="/">Teacher 3</a>
+
+    </div>
+>>>>>>> 10e8d62... the final design of the student page
   </body>
 </html>

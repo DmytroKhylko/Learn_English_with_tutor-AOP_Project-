@@ -1,0 +1,103 @@
+h1{
+  color: purple;
+}
+
+.search-box{
+  position: absolute;
+  top: 23%;
+  right: 76%;
+  transform: translate(-50%,-50%);
+  background: #f76d00;
+  height: 22px;
+  border-radius: 1px;
+  padding: 10px;
+  font-family: "Avantgarde", sans-serif;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+form.searchbar input[type=text] {
+  margin-bottom: 1000px;
+  top: 29%;
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float:left;
+  height: 35px;
+  background: #f1f1f1;
+  position: fixed ;
+  width: 278px;
+  margin-left: 36px;
+
+}
+form.searchbar button {
+  position:fixed;
+  float: left;
+  height: 35px;
+  padding: 10px;
+  background: #f76d00;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+  top: 29%;
+  margin-right: 960px;
+}
+
+form.searchbar button:hover {
+  background: #f76d00;
+}
+
+form.searchbar::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#layout {
+  padding: 20px;
+  border: solid 1px black;
+  background-color: purple;
+}
+#button1 {
+  margin-left: 90%;
+  margin-top: -2%;
+  background: #f76d00;
+  font-size:20px;
+  border-radius: 5px;
+  color: white;
+}
+#btn-teacher1, #btn-teacher2,
+#btn-teacher3{
+  width: 220px;
+  left: 38px;
+  background: #f76d00;
+  position:fixed;
+  border-radius: 5px;
+  font-size:20px;
+  color: white;
+}
+#search-layout{
+  height: 37%;
+  top: 27%;
+  width:317px;
+  left:1px;
+  background-color: purple;
+  position: fixed;
+  border-radius: 3px;
+}
+
+#btn-option1, #btn-option2{
+  width: 500px;
+  margin-left: 449px;
+  background: #f76d00;
+  position:fixed;
+  border-radius: 5px;
+  font-size:20px;
+  color: white;
+}
