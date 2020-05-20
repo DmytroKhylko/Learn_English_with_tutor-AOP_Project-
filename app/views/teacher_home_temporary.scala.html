@@ -1,12 +1,45 @@
 @import play.mvc.Http.Request
 @(login: String)(implicit request: Request)
-<html>
+<html lang="en">
   <title>
-
+    <title>FAST FLUENCY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="http://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheets">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/teacher.css")">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </title>
 
   <body>
-    Hello teacher @login
-    <a href="/" >home page</a>
+  <nav class="navbar navbar-light bg-light justify-content-betwee">
+    <h1><em>FAST FLUENCY</em></h1>
+    <a class="btn" id="button1" href="/">Log out</a>
+  </nav>
+  <p id="layout"></p>
+  <div class="row">
+
+    <div class="col-sm-3">
+      <h2 class="font">Your students</h2>
+      <hr>
+      <form>
+        <input type="text" placeholder=" find your student...">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+<!--    <a href="/" >home page</a>-->
+    </div>
+    <div class="vl"> </div>
+    <div class="col-sm-6">
+      <h1 id="layout1">Hello teacher @login</h1>
+    </div>
+    <div class="vl"> </div>
+    <div class="col-sm-3">
+      <h2 class="font">Lessons you've made</h2>
+      <hr>
+      <form>
+        <input type="text" placeholder=" find your lesson...">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+  </div>
   </body>
 </html>

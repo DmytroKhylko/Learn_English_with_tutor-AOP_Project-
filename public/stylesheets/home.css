@@ -19,16 +19,6 @@ h4{
 }
 
 article {
-  /* margin-top: -350px;
-  margin-left: 750px;
-  margin-right: 300px;
-  margin-bottom: 100px;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
-  padding: 1em;
-  overflow: hidden; */
   border: 1px solid gray;
   overflow: hidden;
 }

@@ -1,0 +1,64 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  margin-left: 10%;
+}
+
+#layout {
+  padding: 20px;
+  border: solid 1px black;
+  background-color: purple;
+}
+
+#button1 {
+  margin-right: 5%;
+  border: 2px solid white;
+  background: #f76d00;
+  font-size:20px;
+  border-radius: 5px;
+}
+
+form {
+  margin-left: 5%;
+  position: relative;
+  width: 95%;
+  /*margin: 0 auto;*/
+}
+button {
+  border: none;
+  outline: none;
+  border-radius: 3px;
+}
+input {
+  width: 100%;
+  height: 42px;
+  background: #F9F0DA;
+  border: #311c24;
+  border-radius: 3px;
+  outline: none;
+}
+
+button {
+  height: 26px;
+  width: 26px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #F15B42;
+  cursor: pointer;
+}
+
+#layout1 {
+  margin-top: 10%;
+  margin-left: 25%;
+}
+
+.vl {
+  border-right:1px solid lightgray;
+  width: 0;
+  height: 575px;
+  margin-left: -1px;
+}
