@@ -20,5 +20,24 @@
       <li>@connectedUser</li>
     }
     </ul>
+
+@*    @helper.form(routes.UserController.linkUser()) {*@
+@*      @helper.CSRF.formField*@
+@*      <input type="text" required placeholder="  Enter name of student ot add" name="linkUser">*@
+@*      <br><br>*@
+@*      <button type="submit">  Add   </button>*@
+@*      <br>*@
+@*      }*@
+
+      <br>
+      <input class="getUser" type="text" required placeholder="  Enter name of teacher to add" name="linkUser">
+      <br>
+      <button class="submitBtn">  Find   </button>
+
+      <ul class="linkedUsers">
+
+    </ul>
+
+      <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
   </body>
 </html>

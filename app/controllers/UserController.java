@@ -1,6 +1,8 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import play.data.FormFactory;
+import play.libs.Json;
 import play.mvc.*;
 import play.filters.csrf.*;
 import play.data.Form;
@@ -20,6 +22,7 @@ public class UserController extends Controller{
 
   private final Form<UserSignUpData> userForm;
   private final Form<UserLogInData> userLogInForm;
+  private final Form<LinkUserData> linkUserDataForm;
 
   private final AuthorizationDBConnection db;
 
@@ -27,6 +30,7 @@ public class UserController extends Controller{
   public UserController(FormFactory formFactory, AuthorizationDBConnection db) {
     this.userForm = formFactory.form(UserSignUpData.class);
     this.userLogInForm = formFactory.form(UserLogInData.class);
+    this.linkUserDataForm = formFactory.form(LinkUserData.class);
     this.db = db;
   }
 
@@ -76,20 +80,30 @@ public class UserController extends Controller{
     return redirect(routes.HomeController.home()).removingFromSession(request, "login", "status");
   }
 
-//  @RequireCSRFCheck
-//  public Result linkUser(Http.Request request){
-//    final Form<ConnectWithUser> boundForm = connectWithUserForm.bindFromRequest(request);
-//    if (boundForm.hasErrors()) {
-//      return badRequest(views.html.home.render(request));
-//    }
-//    ConnectWithUser connectWithUser = boundForm.get();
-//    if(userDB.connectWithUserInDB(request.session().get("login"), connectWithUser.getConnectWithUser())){
-//      Optional<String> status = request.session().get("status");
-//      Optional<String> teacher = Optional.of("teacher");
-//      if(status.equals(teacher))
-//        return redirect(routes.HomeController.teacher());
-//      return redirect(routes.HomeController.student());
-//    }
-//    return badRequest(views.html.home.render(request));
-//  }
+  @RequireCSRFCheck
+  public Result linkUser(Http.Request request){
+    final Form<LinkUserData> boundForm = linkUserDataForm.bindFromRequest(request);
+    if (boundForm.hasErrors()) {
+      return badRequest(views.html.home.render(request));
+    }
+    LinkUserData connectWithUser = boundForm.get();
+    db.linkUser(request.session().get("login").orElse("Empty link"), connectWithUser.getLinkUser());
+
+    Optional<String> status = request.session().get("status");
+    Optional<String> teacher = Optional.of("teacher");
+    if(status.equals(teacher))
+      return redirect(routes.HomeController.teacher());
+    return redirect(routes.HomeController.student());
+  }
+
+  public Result search(Http.Request request){
+    String searchStatus;
+    JsonNode json = request.body().asJson();
+    Optional<String> status = request.session().get("status");
+    Optional<String> teacher = Optional.of("teacher");
+    if(status.equals(teacher)){
+      searchStatus = "student";
+    }else searchStatus = "teacher";
+    return ok(Json.toJson(db.searchInDB(json.get("searchString").asText(), searchStatus)));
+  }
 }

@@ -4,6 +4,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import play.db.*;
 import javax.inject.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Optional;
 
@@ -144,5 +145,24 @@ public class AuthorizationDBConnection {
       }
     }
     return false;
+  }
+
+  public ArrayList<String> searchInDB(String searchString, String status){
+      ArrayList<String> searchResult = new ArrayList<>();
+    try {
+      Connection conn = db.getConnection();
+      Statement stmt = conn.createStatement();
+
+      String sql = String.format("SELECT login FROM users  WHERE status = '%s' AND login LIKE '%s'", status, "%"+searchString+"%");
+
+      ResultSet result = stmt.executeQuery(sql);
+      while(result.next()){
+        searchResult.add(result.getString("login"));
+      }
+      conn.close();
+    } catch (SQLException se) {
+      se.printStackTrace();
+    }
+    return searchResult;
   }
 }
