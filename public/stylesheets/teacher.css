@@ -1,6 +1,7 @@
 *{
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 h2 {
@@ -32,7 +33,7 @@ button {
   outline: none;
   border-radius: 3px;
 }
-input {
+.input {
   width: 100%;
   height: 42px;
   background: #F9F0DA;
@@ -41,13 +42,23 @@ input {
   outline: none;
 }
 
-#button2, #button3 {
+#button2 {
   height: 26px;
   width: 26px;
   position: absolute;
   top: 8px;
   right: 8px;
   background: #F15B42;
+  cursor: pointer;
+}
+
+#button3 {
+  height: 26px;
+  width: 26px;
+  position: absolute;
+  top: 8px;
+  right: 45px;
+  background: #148d23;
   cursor: pointer;
 }
 
@@ -114,20 +125,40 @@ input {
   width: 89%;
   outline: none;
   height: 15%;
-  background: #efbc9a;
+  background: #b1ef9a;
 }
 
 .lessons-view {
   margin-left: 77%;
-  margin-top: -20.75%;
-  border: 1px solid #c95c0a;
-  background: #f17a49;
+  margin-top: -9.75%;
+  border: 1px solid #148d23;
+  background: #30c62b;
 }
 
 .lessons-edit {
-  margin-left: 10%;
+  margin-left: 78%;
   margin-top: -20.75%;
-  border: 1px solid #c95c0a;
-  background: #f17a49;
+  border: 1px solid #148d23;
+  background: #30c62b;
 }
 
+.lessons-delete {
+  margin-left: 10%;
+  margin-top: -9.75%;
+  border: 1px solid #148d23;
+  background: #30c62b;
+}
+
+.link {
+  font-size: 20px;
+  margin-left: 30%;
+}
+
+.input2 {
+  width: 90%;
+  height: 42px;
+  background: #c4f5b2;
+  border: #311c24;
+  border-radius: 3px;
+  outline: none;
+}
