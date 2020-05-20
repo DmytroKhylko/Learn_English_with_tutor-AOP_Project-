@@ -5,7 +5,7 @@ import play.mvc.*;
 import java.util.Optional;
 
 import models.AuthorizationDBConnection;
-import views.html.student_home_temporary;
+import views.html.home_student;
 
 import javax.inject.Inject;
 
@@ -48,7 +48,7 @@ public class HomeController extends Controller {
       return request
         .session()
         .get("login")
-        .map(logIn -> ok(student_home_temporary.render(logIn, db.getLinkedUsers(logIn), request)))
+        .map(logIn -> ok(home_student.render(logIn, db.getLinkedUsers(logIn), request)))
         .orElseGet(() -> redirect(routes.HomeController.home()));
     }
 
@@ -56,7 +56,7 @@ public class HomeController extends Controller {
       return request
         .session()
         .get("login")
-        .map(logIn -> ok(views.html.teacher_home_temporary.render(logIn, db.getLinkedUsers(logIn), request)))
+        .map(logIn -> ok(views.html.home_teacher.render(logIn, db.getLinkedUsers(logIn), request)))
         .orElseGet(() -> redirect(routes.HomeController.home()));
     }
 }

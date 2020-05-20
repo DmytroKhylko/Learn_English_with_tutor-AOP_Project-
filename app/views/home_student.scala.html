@@ -1,0 +1,62 @@
+@import java.util
+@import play.mvc.Http.Request
+@(login: String, connectedUsers: util.LinkedList[String])(implicit request: Request)
+<html lang="en">
+  <title>
+    <title>FAST FLUENCY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="http://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheets">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/teacher.css")">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </title>
+
+  <body>
+    <nav class="navbar navbar-light bg-light justify-content-betwee">
+      <h1><em>FAST FLUENCY</em></h1>
+      <a class="btn" id="button1" href="/logout" >Log Out</a>
+    </nav>
+    <p id="layout"></p>
+    <div class="row">
+
+      <div class="col-sm-3">
+        <div class="searchArea">
+          <input class="getUser" type="text" required placeholder="  find new students..." name="linkUser">
+          <button class="searchBtn"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="foundResults">
+          <ul class="linkedUsers">
+
+          </ul>
+        </div>
+        <hr>
+        <h2 class="font">Your teachers</h2>
+        <hr>
+        @if(connectedUsers.isEmpty){
+          <br>
+          You have no connected teachers
+        }
+        <ul class="connectedUsers">
+        @for(connectedUser <- connectedUsers) {
+          <li>@connectedUser</li>
+          <br>
+        }
+        </ul>
+      </div>
+      <div class="vl"> </div>
+      <div class="col-sm-6">
+        <h1 id="layout1">Hello student @login</h1>
+      </div>
+      <div class="vl"> </div>
+@*      <div class="col-sm-3">*@
+@*        <h2 class="font">Lessons you've made</h2>*@
+@*        <hr>*@
+@*        <div class="searchArea">*@
+@*          <input type="text" placeholder=" find your lesson...">*@
+@*          <button type="submit"><i class="fa fa-search"></i></button>*@
+@*        </div>*@
+@*      </div>*@
+    </div>
+    <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
+  </body>
+</html>

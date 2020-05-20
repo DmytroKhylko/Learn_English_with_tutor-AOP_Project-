@@ -8,18 +8,22 @@ searchBtn.addEventListener("click", async (event)=>{
   var listOfLinkedUsers = foundUsers.map((userName)=>{
     var listDiv = document.createElement("div")
     var listElement = document.createElement("li")
+    var br = document.createElement("br")
     listElement.innerText = userName
     var addBtn = document.createElement("button")
-    addBtn.innerText = "ADD"
+    addBtn.innerHTML = "<i class=\"fa fa-plus-square-o\">"
     addBtn.addEventListener("click",  (event)=>{
       console.log(userName)
     })
     listDiv.appendChild(listElement)
-    listDiv.appendChild(addBtn)
+    if(userName !== "Input some data to search for") {
+      listDiv.appendChild(br)
+      listDiv.appendChild(addBtn)
+    }
     return listDiv
   })
   listOfLinkedUsers.forEach((node)=>{
-    linkedUsers.appendChild(node)
+    linkedUsers.appendChild(node).style.position = 'relative'
   })
 })
 

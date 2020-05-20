@@ -104,6 +104,6 @@ public class UserController extends Controller{
     if(status.equals(teacher)){
       searchStatus = "student";
     }else searchStatus = "teacher";
-    return ok(Json.toJson(db.searchInDB(json.get("searchString").asText(), searchStatus)));
+    return ok(Json.toJson(db.searchInDB(request, json.get("searchString").asText(), searchStatus)));
   }
 }

@@ -2,6 +2,8 @@ package models;
 
 import org.mindrot.jbcrypt.BCrypt;
 import play.db.*;
+import play.mvc.Http;
+
 import javax.inject.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -147,8 +149,13 @@ public class AuthorizationDBConnection {
     return false;
   }
 
-  public ArrayList<String> searchInDB(String searchString, String status){
+  public ArrayList<String> searchInDB(Http.Request request, String searchString, String status){
       ArrayList<String> searchResult = new ArrayList<>();
+      if(searchString.equals("")) {
+        searchResult.add("Input some data to search for");
+        return searchResult;
+      }
+    String user = request.session().get("login").orElse("");
     try {
       Connection conn = db.getConnection();
       Statement stmt = conn.createStatement();
@@ -157,12 +164,34 @@ public class AuthorizationDBConnection {
 
       ResultSet result = stmt.executeQuery(sql);
       while(result.next()){
-        searchResult.add(result.getString("login"));
+        if(!alreadyLinked(user, result.getString("login"))) {
+          searchResult.add(result.getString("login"));
+        }
       }
       conn.close();
     } catch (SQLException se) {
       se.printStackTrace();
     }
     return searchResult;
+  }
+
+  public boolean alreadyLinked(String user, String linkedUser){
+    try {
+      Connection conn = db.getConnection();
+      Statement stmt = conn.createStatement();
+
+      String sql = String.format("SELECT linkedUser FROM relations  WHERE user = '%s'", user);
+
+      ResultSet result = stmt.executeQuery(sql);
+      while(result.next()){
+        String linkedUserDB = result.getString("linkedUser");
+        if(linkedUserDB.equals(linkedUser))
+          return true;
+      }
+      conn.close();
+    } catch (SQLException se) {
+      se.printStackTrace();
+    }
+      return false;
   }
 }
