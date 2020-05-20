@@ -1,14 +1,22 @@
 var getUser = document.querySelector(".getUser")
-var submitBtn = document.querySelector(".submitBtn")
+var searchBtn = document.querySelector(".searchBtn")
 var linkedUsers = document.querySelector(".linkedUsers")
-submitBtn.addEventListener("click", async (event)=>{
+searchBtn.addEventListener("click", async (event)=>{
   var foundUsers = await searchUsers(getUser.value)
   console.log(foundUsers)
   linkedUsers.innerHTML = ""
   var listOfLinkedUsers = foundUsers.map((userName)=>{
+    var listDiv = document.createElement("div")
     var listElement = document.createElement("li")
     listElement.innerText = userName
-    return listElement
+    var addBtn = document.createElement("button")
+    addBtn.innerText = "ADD"
+    addBtn.addEventListener("click",  (event)=>{
+      console.log(userName)
+    })
+    listDiv.appendChild(listElement)
+    listDiv.appendChild(addBtn)
+    return listDiv
   })
   listOfLinkedUsers.forEach((node)=>{
     linkedUsers.appendChild(node)
