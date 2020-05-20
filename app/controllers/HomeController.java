@@ -25,10 +25,10 @@ public class HomeController extends Controller {
 
     //these two functions must be deleted. They are temporary
     public Result student(String login, Http.Request request){
-      return ok(views.html.student_home_temporary.render(login, request));
+      return ok(views.html.home_student.render(login, request));
     }
 
     public Result teacher(String login, Http.Request request){
-      return ok(views.html.teacher_home_temporary.render(login, request));
+      return ok(views.html.home_teacher.render(login, request));
     }
 }
