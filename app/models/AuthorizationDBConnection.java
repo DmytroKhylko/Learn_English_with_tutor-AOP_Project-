@@ -156,15 +156,17 @@ public class AuthorizationDBConnection {
         return searchResult;
       }
     String user = request.session().get("login").orElse("");
+    System.out.println(user);
+    Connection conn = null;
     try {
-      Connection conn = db.getConnection();
+      conn = db.getConnection();
       Statement stmt = conn.createStatement();
 
       String sql = String.format("SELECT login FROM users  WHERE status = '%s' AND login LIKE '%s'", status, "%"+searchString+"%");
 
       ResultSet result = stmt.executeQuery(sql);
       while(result.next()){
-        if(!alreadyLinked(user, result.getString("login"))) {
+        if(!alreadyLinked(conn, user, result.getString("login"))) {
           searchResult.add(result.getString("login"));
         }
       }
@@ -172,23 +174,24 @@ public class AuthorizationDBConnection {
     } catch (SQLException se) {
       se.printStackTrace();
     }
+    if(searchResult.isEmpty())
+      searchResult.add("Nothing was found");
     return searchResult;
   }
 
-  public boolean alreadyLinked(String user, String linkedUser){
+  public boolean alreadyLinked(Connection connection, String user, String linkedUser){
     try {
-      Connection conn = db.getConnection();
-      Statement stmt = conn.createStatement();
+      Statement stmt = connection.createStatement();
 
       String sql = String.format("SELECT linkedUser FROM relations  WHERE user = '%s'", user);
 
       ResultSet result = stmt.executeQuery(sql);
       while(result.next()){
         String linkedUserDB = result.getString("linkedUser");
+        System.out.println(linkedUserDB.equals(linkedUser));
         if(linkedUserDB.equals(linkedUser))
           return true;
       }
-      conn.close();
     } catch (SQLException se) {
       se.printStackTrace();
     }

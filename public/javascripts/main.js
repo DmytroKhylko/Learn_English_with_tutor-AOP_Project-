@@ -16,13 +16,14 @@ searchBtn.addEventListener("click", async (event)=>{
       console.log(userName)
     })
     listDiv.appendChild(listElement)
-    if(userName !== "Input some data to search for") {
+    if(userName !== "Input some data to search for" && userName !== "Nothing was found") {
       listDiv.appendChild(br)
       listDiv.appendChild(addBtn)
     }
     return listDiv
   })
   listOfLinkedUsers.forEach((node)=>{
+
     linkedUsers.appendChild(node).style.position = 'relative'
   })
 })
