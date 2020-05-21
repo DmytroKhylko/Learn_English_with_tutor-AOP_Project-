@@ -33,8 +33,9 @@ button {
   outline: none;
   border-radius: 3px;
 }
+
 .input {
-  width: 100%;
+  width: 94%;
   height: 42px;
   background: #F9F0DA;
   border: #311c24;
@@ -47,7 +48,7 @@ button {
   width: 26px;
   position: absolute;
   top: 8px;
-  right: 8px;
+  right: 30px;
   background: #F15B42;
   cursor: pointer;
 }
@@ -57,7 +58,7 @@ button {
   width: 26px;
   position: absolute;
   top: 8px;
-  right: 45px;
+  right: 30px;
   background: #148d23;
   cursor: pointer;
 }
@@ -155,7 +156,7 @@ button {
 }
 
 .input2 {
-  width: 90%;
+  width: 94%;
   height: 42px;
   background: #c4f5b2;
   border: #311c24;
